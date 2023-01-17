@@ -5,6 +5,11 @@ import store from "./store";
 import './premission'
 import './index.css'
 // import 'lib-flexible/flexible';
+import JsonExcel from 'js-table2excel'
+import { Notify, Toast } from "vant";
+Vue.prototype.$JsonExcel = JsonExcel;
+Vue.prototype.$Notify = Notify;
+Vue.prototype.$Toast = Toast;
 import './utils/rem'
 import elementUi from './utils/elementUi'
 Vue.use(elementUi)

@@ -1,6 +1,6 @@
 module.exports = {
   // 表示当前⽬录即为根⽬录，ESLint 规则将被限制到该⽬录下
-  root: true,
+  root: false,
   // env 表示启⽤ ESLint 检测的环境
   env: {
     // 在 node 环境下启动 ESLint 检测
@@ -28,6 +28,11 @@ module.exports = {
     'no-unused-vars': 'warn',
     'indent': 'off',
     'space-before-function-paren': 'off',
-    'linebreak-style': [0, 'error', 'windows']
+    'linebreak-style': [0, 'error', 'windows'],
+    'vue/no-deprecated-slot-attribute': 'off',
+    'vue/no-deprecated-slot-scope-attribute': 'off',
+    'vue/multi-word-component-names': 'off',
+    'vue/no-deprecated-v-bind-sync': 'off',
+    'vue/no-dupe-keys': 'off'
   }
 }

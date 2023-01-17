@@ -2,12 +2,13 @@ import store from '@/store'
 import router from '@/router'
 const whiteList = ['/login']
 router.beforeEach(async (to, from, next) => {
-    const token = store.getters.token
+    const token = store.state.userInfo.token
+    console.log(token)
     if (token) {
         if (to.path === '/login') {
             next(from.path)
         } else {
-            const userInfo = store.getters.userInfo
+            const userInfo = store.state.userInfo
             if (userInfo) {
                 next()
             } else {

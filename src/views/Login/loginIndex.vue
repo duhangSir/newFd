@@ -4,18 +4,18 @@
             <div class="logonContain">
                 <img src="../../img/fdLogo.png" class="fdLogo">
                 <div class="flex flex_column juction_content align_items loginWecl">
-                    <span>Welcome To Login</span>
-                    <span>欢迎登录</span>
+                    <span style="font-size:0.24rem">Welcome To Login</span>
+                    <span style="font-size:0.24rem">欢迎登录</span>
                 </div>
-                <div class="flex juction_content" style="margin-top:0.4rem">
+                <div class="flex juction_content" style="margin-top:40px">
                     <img src="../../img/loginImg.png" class="LoginImgA">
                 </div>
                 <div class="FormLogin">
                     <el-form :model="ruleForm" status-icon ref="ruleForm" label-width="100px" class="demo-ruleForm">
-                        <el-form-item prop="username">
+                        <el-form-item prop="account">
                             <div class="Formusername">
                             </div>
-                            <el-input type="text" v-model="ruleForm.username" autocomplete="off"></el-input>
+                            <el-input type="text" v-model="ruleForm.account" autocomplete="off"></el-input>
                         </el-form-item>
                         <el-form-item prop="password">
                             <div class="Formpassword">
@@ -39,21 +39,21 @@
     </el-container>
 </template>
 <script>
-import Login from '../../api/login'
+import { Login } from '@/api/login'
 export default {
     data() {
         return {
-
             ruleForm: {
-                username: '',
+                account: '',
                 password: '',
             },
         }
     },
     methods: {
         submitForm() {
-            Login.Login(this.ruleForm).then((item) => {
-                console.log(item)
+            Login(this.ruleForm).then(async (item) => {
+                await this.$store.commit("SET_USERINFO", item.data.userinfo)
+                this.$router.push('/')
             })
         }
     }
@@ -66,7 +66,7 @@ export default {
 }
 
 .loginWecl {
-    font-size: 0.24rem;
+    font-size: 0.4rem;
     color: #000;
     font-weight: bold;
     margin-top: 0.5rem;
@@ -137,7 +137,7 @@ export default {
         }
 
         /deep/ .el-input__inner:hover {
-            box-shadow: 0px 0px 4px blue;
+            box-shadow: 0rem 0rem 0.04rem blue;
         }
 
     }
@@ -157,7 +157,7 @@ export default {
 .el-aside {
     background-color: #fff;
     height: 100vh;
-    box-shadow: 2px 0px 10px rgba(24, 84, 234, 1);
+    box-shadow: 0.02rem 0rem 0.1rem rgba(24, 84, 234, 1);
     z-index: 999;
     color: #333;
     font-size: 0.14rem;
@@ -175,7 +175,7 @@ export default {
 .loginbgWhite {
     position: absolute;
     left: 0.5rem;
-    top: .5rem;
+    top: 0.5rem;
     color: #909bcb;
     display: flex;
     flex-direction: column;

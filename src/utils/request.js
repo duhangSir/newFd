@@ -1,6 +1,8 @@
 import axios from 'axios'
 import store from '@/store'
-import { Message } from 'element-ui'
+// import { Message } from 'element-ui'
+import { Toast } from 'vant'
+
 const instance = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 20000
@@ -8,7 +10,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    const token = store.getters.token
+    const token = store.state.userInfo.token
     if (token) {
       config.headers.token = token
     }
@@ -22,9 +24,11 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response) => {
     if (response.data.code == 0) {
-      Message.error(response.data.msg)
+      // Message.error(response.data.msg)
+      let message = response.data.msg
+      Toast(message);
     }
-    return response
+    return response.data
 
     // if (response.data.code === 400) {
     //   Message.error(response.data.msg)

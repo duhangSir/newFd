@@ -8,6 +8,6 @@
 * {
   margin: 0;
   padding: 0;
-  /* font-size: 0.16rem; */
+  font-size: 0.14rem;
 }
 </style>
